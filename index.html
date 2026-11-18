@@ -6,47 +6,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VembleBook</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
-}
-header {
-  background: #1877f2;
-  color: white;
-  padding: 18px;
-  font-size: 28px;
-  font-weight: bold;
-}
-main {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 15px;
-}
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-}
-button {
-  background: #1877f2;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 7px;
-  font-size: 16px;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f0f2f5;color:#222}
+header{background:#1877f2;color:white;padding:18px;font-size:27px;font-weight:bold}
+main{max-width:430px;margin:35px auto;padding:15px}
+.card{background:white;padding:25px;border-radius:14px;box-shadow:0 2px 10px #ddd}
+h2{text-align:center;color:#1877f2}
+p{text-align:center}
+input{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:7px;font-size:15px}
+button{width:100%;padding:13px;margin-top:12px;border:0;border-radius:7px;background:#1877f2;color:white;font-size:17px}
+.secondary{background:#42b72a}
+.hidden{display:none}
+.link{text-align:center;color:#1877f2;margin-top:18px;cursor:pointer}
 </style>
 </head>
 <body>
 <header>VembleBook</header>
 <main>
-  <div class="card">
-    <h2>Welcome to VembleBook!</h2>
-    <p>বিশ্বের মানুষের সঙ্গে যুক্ত হোন।</p>
-    <button>Get Started</button>
-  </div>
+<div class="card" id="home">
+<h2>Welcome to VembleBook!</h2>
+<p>বিশ্বের মানুষের সঙ্গে যুক্ত হোন।</p>
+<button onclick="show('signup')">Get Started</button>
+<button class="secondary" onclick="show('login')">Login</button>
+</div>
+
+<div class="card hidden" id="signup">
+<h2>Create Account</h2>
+<p>নতুন অ্যাকাউন্ট খুলুন</p>
+<input placeholder="আপনার নাম">
+<input type="email" placeholder="ইমেইল">
+<input type="tel" placeholder="ফোন নম্বর">
+<input type="password" placeholder="পাসওয়ার্ড">
+<button onclick="alert('অ্যাকাউন্ট তৈরির ব্যবস্থা পরের ধাপে যুক্ত হবে।')">Sign Up</button>
+<div class="link" onclick="show('login')">আগে অ্যাকাউন্ট আছে? Login</div>
+<div class="link" onclick="show('home')">Home</div>
+</div>
+
+<div class="card hidden" id="login">
+<h2>Login</h2>
+<p>আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
+<input placeholder="ইমেইল অথবা ফোন নম্বর">
+<input type="password" placeholder="পাসওয়ার্ড">
+<button onclick="alert('লগইন ব্যবস্থা পরের ধাপে যুক্ত হবে।')">Login</button>
+<div class="link" onclick="show('signup')">নতুন অ্যাকাউন্ট খুলুন</div>
+<div class="link" onclick="show('home')">Home</div>
+</div>
 </main>
+<script>
+function show(page){
+document.querySelectorAll('.card').forEach(x=>x.classList.add('hidden'));
+document.getElementById(page).classList.remove('hidden');
+}
+</script>
 </body>
 </html>
